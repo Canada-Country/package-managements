@@ -1,7 +1,7 @@
 #!/bin/bash
 #i1) Switch to root user [ sudo -i]
 
-sudo hostnamectl set-hostname  node1
+sudo hostnamectl set-hostname  node2
 
 #2) Disable swap & add kernel settings
 
@@ -66,7 +66,7 @@ sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config
 systemctl restart containerd
 systemctl enable containerd
 
-5) Installing kubeadm, kubelet and kubectl
+#5) Installing kubeadm, kubelet and kubectl
 
 # Update the apt package index and install packages needed to use the Kubernetes apt repository:
 
@@ -96,5 +96,5 @@ systemctl daemon-reload
 systemctl start kubelet
 systemctl enable kubelet.service
 
-sudo kubeadm join 10.0.0.6:6443 --token xmzufh.e0nu3kb5ohijfxyh \
-        --discovery-token-ca-cert-hash sha256:579b6a53bd00c8483f5150b9fb521b6431fc38b1ac716b8b9a5f668928a93771
+skubeadm join 172.31.27.246:6443 --token q8jxy4.djlf97kwa3p3rncg \
+	--discovery-token-ca-cert-hash sha256:1bb8dd4b87b3f41896639c4bc0da46c0e719c2a56c6cb4b0aab1b031ec8fb443
